@@ -4,12 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.sample.dts-example.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>CodelessUSB</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,10 +21,33 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>IOKitPersonalities</key>
-	<dict/>
+	<dict>
+		<key>CodelessUSB</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.kpi.iokit</string>
+			<key>IOClass</key>
+			<string>IOService</string>
+			<key>IOProviderClass</key>
+			<string>IOUSBInterface</string>
+			<key>bConfigurationValue</key>
+			<integer>1</integer>
+			<key>bInterfaceNumber</key>
+			<integer>0</integer>
+			<key>bcdDevice</key>
+			<integer>256</integer>
+			<key>idProduct</key>
+			<integer>5734</integer>
+			<key>idVendor</key>
+			<integer>2385</integer>
+		</dict>
+	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2013 rich kubota. All rights reserved.</string>
+	<string>Copyright © 2013 Apple Inc. All rights reserved.</string>
 	<key>OSBundleLibraries</key>
-	<dict/>
+	<dict>
+		<key>com.apple.kpi.iokit</key>
+		<string>14.0.0</string>
+	</dict>
 </dict>
 </plist>

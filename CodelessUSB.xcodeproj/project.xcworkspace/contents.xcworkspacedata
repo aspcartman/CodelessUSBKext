@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SampleUSBFTDICodelessKext.xcodeproj">
+      location = "self:CodelessUSB.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,0 +1,34 @@
+ReadMe for SampleUSBFTDICodelessKext
+================================================
+1.0
+
+SampleUSBFTDICodelessKext is a project for creating a codeless kext to match to your USB Interface of your Composite class device to prevent a system driver from being matched to the interface. The codeless kext will have the base IOService driver match to the interface. As IOService does not open the interface, the interface can later be opened by an Application driver.
+
+The sample project is designed to be modified specifically to a USB FTDI Interface. To customize the codeless kext to your hardware, perform the following steps.
+
+1. Open the project using Xcode 5.x.
+2. Open the file SampleUSBFTDICodelessKext-Info.plist and change the name of the Bundle Identifer to an identifier appropriate to your company - 
+change "com.sample.dts-example.SampleUSBFTDICodelessKext"
+3. In the IOKitPersonalities dictionary, change "SampleUSBFTDIDevice" to match the name of your hardware.
+4. Modify the following properties to match the interface of your USB FTDI hardware interface
+	a. idProduct
+	b. idVendor
+	c. bcdDevice
+	d. bInterfaceNumber
+	e. bConfigurationValue
+    Note: leave the CFBundleIdentifier, IOClass and IOProviderClass as defined in the info.plist
+5. Modify the project settings to name the codeless kext as appropriate for your hardware.
+6. If your codeless kext is to support multiple interfaces from being matched to the system driver, add IOKitPersonalities as needed. Copy the CFBundleIdentifier, IOClass and IOProviderClass properties and string values to each personality.
+7. Modify the human readable copyright as appropriate.
+
+IMPORTANT - This project does not implement kext code signing which is required for installation to the /Library/Extensions folder under OS X Mavericks. To test this codeless kext you can temporarily install the kext from the terminal using sudo to /System/Library/Extensions/. Make sure to touch the folder so that the new kext is recognized - as follows
+user$ sudo touch /System/Library/Extensions
+
+It is important to recognize that the temporary placement of the codeless kext in the "/System/Library/Extensions" folder is for test processes only. The official placement of the codeless kext shall be in the /Library/Extensions/ folder. See the 2013 WWDC video, session 707 "What's New in Kext Development". You will note that the kext must now be signed with the special developer ID. To request the Developer ID Certificate for signing kexts, please submit the request using the the form at the following URL.
+<https://developer.apple.com/contact/kext/>
+
+If there are any follow up questions regarding the Developer ID submission process, please use the "Contact Us" button on the form page to send further communications.
+
+Before restarting, you can make sure that the kext can load using the 
+user$ sudo kextutil -tn ../PathToCodelessKext/SampleUSBFTDICodelessKext
+If there are any issues, they will be reported by kextutil. 
